@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".OrderFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.icecream.model.OrderViewModel" />
+
+        <variable
+            name="orderFragment"
+            type="com.example.icecream.OrderFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/side_margin">
+
+            <ImageView
+                android:id="@+id/ice_cream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ice_cream"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="?attr/textAppearanceBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_ice_cream"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ice_cream" />
+
+            <RadioGroup
+                android:id="@+id/scoops"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_between_elements"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <RadioButton
+                    android:id="@+id/one"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(1)}"
+                    android:onClick="@{() -> viewModel.setScoops(1)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/one_scoop" />
+
+                <RadioButton
+                    android:id="@+id/six"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(6)}"
+                    android:onClick="@{() -> viewModel.setScoops(6)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/six_scoops" />
+
+                <RadioButton
+                    android:id="@+id/twelve"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(12)}"
+                    android:onClick="@{() -> viewModel.setScoops(12)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/twelve_scoops" />
+
+                <RadioButton
+                    android:id="@+id/eighteen"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(18)}"
+                    android:onClick="@{() -> viewModel.setScoops(18)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eighteen_scoops" />
+
+                <RadioButton
+                    android:id="@+id/twenty_four"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(24)}"
+                    android:onClick="@{() -> viewModel.setScoops(24)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/twenty_four_scoops" />
+
+                <RadioButton
+                    android:id="@+id/thirty"
+                    android:layout_width="wrap_content"
+                    android:checked="@{viewModel.scoops.equals(30)}"
+                    android:onClick="@{() -> viewModel.setScoops(30)}"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thirty_scoops" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/next_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@string/next_button"
+                android:layout_marginEnd="@dimen/margin_between_elements"
+                app:layout_constraintEnd_toStartOf="@id/cancel_order"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scoops" />
+
+            <Button
+                android:id="@+id/cancel_order"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/next_order"
+                app:layout_constraintTop_toTopOf="@+id/next_order" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
